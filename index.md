@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: project magpie 
+tagline: Empowering digital Freedom
 ---
 {% include JB/setup %}
 

@@ -8,7 +8,7 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : ,,project magpie''
+title : project magpie
 tagline: Empowering digital freedom ...
 author :
   name : project magpie

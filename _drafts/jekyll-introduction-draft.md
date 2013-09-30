@@ -1,7 +1,7 @@
 ---
 layout: post
 category : lessons
-tagline: "Supporting tagline"
+tagline: "Empowering digital freedom"
 tags : [intro, beginner, jekyll, tutorial]
 ---
 {% include JB/setup %}

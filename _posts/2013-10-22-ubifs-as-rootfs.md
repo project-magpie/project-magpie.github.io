@@ -6,9 +6,14 @@ category: ""
 tags: [ubifs rootfs ]
 ---
 {% include JB/setup %}
-This Post describes how to get startet with an UBIFS root filesystem. I suppose you are using a image generated for the "spark" device. If have not done any tests with "spark7162". For the spark boxes there is automatically a ubifs image generated. 
+This Post describes how to get startet with an UBIFS root filesystem. I suppose you are using a image generated for the "spark" device. I have not done any tests with "spark7162". For the spark boxes there is automatically a ubifs image generated. 
 
 <!--more-->
+
+Generate a core-image-minimal for example. This assumes You already have set-up the yocto build environment.
+
+    MACHINE=spark bitbake core-image-minimal
+
 This can be found here
     
     tmp/deploy/images/core-image-minimal-spark.ubi

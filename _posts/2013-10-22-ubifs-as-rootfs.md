@@ -6,12 +6,15 @@ category: ""
 tags: [ubifs rootfs ]
 ---
 {% include JB/setup %}
-This Post describes how to get startet with an UBIFS root filesystem. I suppose you are using a image generated for the "spark" device. If have not done any tests with "spark7162". For the spark boxes there is automatically a ubifs image generated. This can bve found here
+This Post describes how to get startet with an UBIFS root filesystem. I suppose you are using a image generated for the "spark" device. If have not done any tests with "spark7162". For the spark boxes there is automatically a ubifs image generated. 
+
+<!--more-->
+This can be found here
     
     tmp/deploy/images/core-image-minimal-spark.ubi
 
 This is a ubivolume which can be burned to flash ...
-<!--more-->
+
 
 The Linux Way
 =============

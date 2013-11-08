@@ -6,7 +6,7 @@ category: ""
 tags: [git]
 ---
 {% include JB/setup %}
-Sometimes history have to be rewritten. In real life this is hopefully not possible yet. But in case of git this is possible. Some projecs start with a small repository which evolves over the time to a big bloated repository. Other ones start already bloated. In some cases the wish to split-up the repository in smaller chunks emerges. With some advice from [Stefan Seyfried](http://seife.kernalert.de/blog/) I learned how to rewrite history
+Sometimes history has to be rewritten. In real life this is hopefully not possible yet. But in case of git this is possible. Some projecs start with a small repository which evolves over the time to a big bloated repository. Other ones start already bloated. In some cases the wish to split-up the repository in smaller chunks emerges. With some advice from [Stefan Seyfried](http://seife.kernalert.de/blog/) I learned how to rewrite history
 <!--more-->
 The goal was to extract the driver directory from the [tdt](https://gitorious.org/open-duckbox-project-sh4/tdt) repository like [Stefan](https://gitorious.org/neutrino-mp/tdt-driver) already did.
 

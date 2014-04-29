@@ -7,7 +7,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-Today I tried to track down the EDID ("Extended display identification data") bug on my STi7111 spark Box. EDID is needed to detect the display attached to the set-top box. On the newer STi7105 based boxes this works quite good. But on the STi7111 based spark boxes there is a hardware error.
+Today I tried to track down the [EDID ("Extended display identification data")](http://en.wikipedia.org/wiki/Extended_display_identification_data) bug on my STi7111 (Golden Media 990CR ) spark box. [EDID](http://en.wikipedia.org/wiki/Extended_display_identification_data) is needed to detect the display attached to the set-top box. On the newer STi7105 based boxes this works quite good. But on the STi7111 based spark boxes there is a hardware error.
 
 <!--more-->
 
@@ -24,21 +24,21 @@ During EDID query the frame-buffer driver prints out the following warning messa
     stmfb: EDID Read Error, setup safe EDID
     stmfb: Setting Safe EDID
 
-So I decided to take a look at the hardware and do some test. Because EDID seems to be needed for a working HDMI-CEC set-up.
+So I decided to take a look at the hardware and do some test. Because EDID is needed for a working [HDMI-CEC](http://en.wikipedia.org/wiki/HDMI#CEC) set-up. The EDID information is stored inside an [EEPROM](http://en.wikipedia.org/wiki/EEPROM) on the Television/Montor. The EEPROM is accessed by the STB via an I2C bus.
 
 The result looks a little bit chaotic isn't it?
 
 ![This is what it all ended.]({{ site.url }}/assets/edid/overview.jpg)
 
-The image shows the set-top box, a salea logic 16 logic analyser and a bus pirate. The salea logic analyser is to listen to i2c communication between the various loose ends. Before we can access the HDMI connector and the i2c EDID data lines we have to remove the Ethernet board. This is achieved by removing just one screw and lifting the complete ethernet board.
+The image shows the set-top box, a [salea logic16](https://www.saleae.com/logic16) logic analyser and a [DP Bus Pirate](http://dangerousprototypes.com/docs/Bus_Pirate). The salea logic analyser is to listen to I2C communication between the various loose ends. Before we can access the HDMI connector and the I2C EDID data lines we have to remove the Ethernet board. This is achieved by removing just one screw and lifting the complete Ethernet board.
 
 ![Remove the Ethernet board]({{ site.url }}/assets/edid/ethernet_board.jpg)
 
-After removing the ethernet board it looks like this:
+After removing the Ethernet board it looks like this:
 
 ![EDID stuff]({{ site.url }}/assets/edid/edid_stuff.jpg)
 
-For debugging purposes I soldered some wires to the related components. There are two types of i2c bus involved. The one from HDMI which is a 5V type and the one from the STB which is at a 3.3V level. So the not applied components seems to form a level shifter. If I attach an HDMI monitor to the STB I can see transfers from STB to an EEPROM on the board which response with 0xFF in all bytes. But no communication over HDMI. Because the loose ends are not connected.
+For debugging purposes I soldered some wires to the related components. There are two types of I2C bus involved. The one from HDMI which is a 5V type and the one from the STB which is at a 3.3V level. So the not applied components seems to form a level shifter. If I attach an HDMI monitor to the STB I can see transfers from STB to an EEPROM on the board which response with 0xFF in all bytes. But no communication over HDMI. Because the loose ends are not connected.
 
 ![EDID details]({{ site.url }}/assets/edid/cable_zoom.jpg)
 

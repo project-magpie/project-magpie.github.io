@@ -7,7 +7,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-Today I tried to track down the [EDID ("Extended display identification data")](http://en.wikipedia.org/wiki/Extended_display_identification_data) bug on my STi7111 (Golden Media 990CR ) spark box. [EDID](http://en.wikipedia.org/wiki/Extended_display_identification_data) is needed to detect the display attached to the set-top box. On the newer STi7105 based boxes this works quite good. But on the STi7111 based spark boxes there is a hardware error.
+Today I tried to track down the [EDID ("Extended display identification data")](http://en.wikipedia.org/wiki/Extended_display_identification_data) bug on my STi7111 (Golden Media 990CR ) spark box. [EDID](http://en.wikipedia.org/wiki/Extended_display_identification_data) is needed to detect the display attached to the set-top box. On the newer STi7105 based boxes this works quite good. But on the STi7111 based spark boxes there is a hardware issue.
 
 <!--more-->
 
@@ -70,7 +70,7 @@ With an attached [bus pirate](http://dangerousprototypes.com/docs/Bus_Pirate) to
      3. ~100KHz
      4. ~400KHz
 
-The i2c sequence to read data from the eeprom have to define a start address where we want to read from:
+The i2c sequence to read data from the EEPROM have to define a start address where we want to read from:
 
     I2C>[0xa0 0]
     I2C START BIT
@@ -96,8 +96,11 @@ So now lets read 128 byte of EDID data:
     I2C STOP BIT
 
 
+We do not need any pull-ups power set-up for the Bus Pirate because the bus is already pulled high by the STB. And due to the fact that I2C only pulls level to low we need no adjustment for 3.3V and 5V. 
+
 With some editor regular-expression magic we can form a python snippet to create a binary EDID file we can analyse later.
 
+    import struct
     edid_txt = [ '0x00', '0xFF', '0xFF', '0xFF', '0xFF', '0xFF', '0xFF', '0x00',
                  '0x04', '0x72', '0x30', '0x02', '0x01', '0x00', '0x00', '0x00',
                  '0x08', '0x15', '0x01', '0x03', '0x80', '0x33', '0x1D', '0x78',

@@ -9,7 +9,7 @@ tags: olimex,yocto,A20,Lime,sunxi
 
 Some time ago I ordered a [A20-OLinuXino-LIME-4GB](https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME-4GB/open-source-hardware) board. This was planed as a replacement for my not so beloved Raspberry PI. I am not that big fan of the PI because of the wacky SD-Card holder and the USB stability. I hope the 4GB NAND of the [A20-OLinuXino-LIME-4GB](https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME-4GB/open-source-hardware) Will improve the stability of my target application.
 <!--more-->
-As a big fan of the [Yocto Project](https://www.yoctoproject.org/) I decided to run poky on my OLinuXino.
+As a big fan of the [Yocto Project](https://www.yoctoproject.org/) I decided to run poky on my OLinuXino. Due to the fact that the [A20-OLinuXino-LIME-4GB](https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME-4GB/open-source-hardware) is not yet officially supported by the [meta-sunxi layer](https://github.com/linux-sunxi/meta-sunxi) there are some patches needed. Those patches are located in [my fork](https://github.com/cybertux/meta-sunxi/tree/olimex-a20-lime). The patch set is against the daisy branch
 
 # Preparation
 
@@ -18,11 +18,11 @@ Clone the git repositories and switch to the daisy branch.
     mkdir /data/src/yocto
     cd /data/src/yocto
     git clone git://git.yoctoproject.org/poky
-    git clone git@github.com:linux-sunxi/meta-sunxi.git
+    git clone https://github.com/cybertux/meta-sunxi.git
     cd poky
     git checkout -b daisy origin/daisy
     cd .. meta-sunxi
-    git checkout -b daisy origin/daisy
+    git checkout -b daisy origin/olimex-a20-lime
 
 Prepare a warm and cozy environment for the build
 
@@ -54,7 +54,7 @@ Set the correct target machine and tuning parameters
      #
      # This sets the default machine to be qemux86 if no other machine is selected:
     -MACHINE ??= "qemux86"
-    +MACHINE ??= "olinuxino-a20"
+    +MACHINE ??= "olinuxino-a20-lime"
 
      #
      # Where to place downloads
@@ -101,7 +101,7 @@ Now the image can be build, lean back and grap some coffee, beer, ...
     BUILD_SYS         = "x86_64-linux"
     NATIVELSBSTRING   = "Ubuntu-12.04"
     TARGET_SYS        = "arm-poky-linux-gnueabi"
-    MACHINE           = "olinuxino-a20"
+    MACHINE           = "olinuxino-a20-lime"
     DISTRO            = "poky"
     DISTRO_VERSION    = "1.6.1"
     TUNE_FEATURES     = "armv7a vfp neon callconvention-hard vfpv4 cortexa7"
@@ -109,12 +109,12 @@ Now the image can be build, lean back and grap some coffee, beer, ...
     meta
     meta-yocto
     meta-yocto-bsp    = "daisy:a4d8015687cf9ddd6ef563e29cf840698f81c099"
-    meta-sunxi        = "daisy:41596163b46f51e43dc7b351132cc0bf1f9d6ed3"
+    meta-sunxi        = "olimex-a20-lime:5bb9da72c24a442eecd827a9b85f903281357815"
     [...]
 
 After a successful build all images are located in the folder
 
-    /data/src/yocto/build/a20-lime/tmp/deploy/images/olinuxino-a20/
+    /data/src/yocto/build/a20-lime/tmp/deploy/images/olinuxino-a20-lime/
 
 # Building the SDK
 
@@ -125,7 +125,7 @@ Sometimes it is handy to have a toolchain apart from the whole yocto/poky enviro
 This will take mostly as long as the image build so again grab some coffee, beer or .....
 The result is located here:
 
-    /data/src/yocto/build/a20-lime/tmp/deploy/sdk/poky-eglibc-i686-core-image-base-cortexa7hf-vfp-vfpv4-neon-toolchain-1.6.1.sh
+    /data/src/yocto/build/a20-lime/tmp/deploy/sdk/olinuxino-a20-lime/poky-eglibc-i686-core-image-base-cortexa7hf-vfp-vfpv4-neon-toolchain-1.6.1.sh
 
 # Installation of the Toolchain
 

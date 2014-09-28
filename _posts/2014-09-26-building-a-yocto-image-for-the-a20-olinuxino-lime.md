@@ -21,7 +21,7 @@ Clone the git repositories and switch to the daisy branch.
     git clone https://github.com/cybertux/meta-sunxi.git
     cd poky
     git checkout -b daisy origin/daisy
-    cd .. meta-sunxi
+    cd ../meta-sunxi
     git checkout -b daisy origin/olimex-a20-lime
 
 Prepare a warm and cozy environment for the build

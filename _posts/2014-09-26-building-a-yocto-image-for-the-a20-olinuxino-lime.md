@@ -9,6 +9,11 @@ tags: olimex,yocto,A20,Lime,sunxi
 
 Some time ago I ordered a [A20-OLinuXino-LIME-4GB](https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME-4GB/open-source-hardware) board. This was planed as a replacement for my not so beloved Raspberry PI. I am not that big fan of the PI because of the wacky SD-Card holder and the USB stability. I hope the 4GB NAND of the [A20-OLinuXino-LIME-4GB](https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME-4GB/open-source-hardware) Will improve the stability of my target application.
 <!--more-->
+
+
+### [Update - 2014-10-01]
+I've created a successful [pull-request](https://github.com/linux-sunxi/meta-sunxi/commit/998cbf354423375ceacf735571dab150b9670502) to merge my changes into the [meta-sunxi](https://github.com/linux-sunxi/meta-sunxi) repository and succeeded with the current master branch. Maybe I also start a pull request for the daisy branch. Due  to the fact that the new yocto release is knocking on the door This is may not needed.
+
 As a big fan of the [Yocto Project](https://www.yoctoproject.org/) I decided to run poky on my OLinuXino. Due to the fact that the [A20-OLinuXino-LIME-4GB](https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME-4GB/open-source-hardware) is not yet officially supported by the [meta-sunxi layer](https://github.com/linux-sunxi/meta-sunxi) there are some patches needed. Those patches are located in [my fork](https://github.com/cybertux/meta-sunxi/tree/olimex-a20-lime). The patch set is against the daisy branch
 
 # Preparation
